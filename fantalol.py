@@ -6,13 +6,6 @@ from selenium import webdriver
 import time
 import re
 
-class Player:
-	def __init__(self, name, team, position):
-		self.name = name
-		self.team = team
-		self.position = position
-
-
 
 def get_match(match_id):
 
@@ -97,11 +90,11 @@ def get_match_id(page):
 # Obtains and outputs stats from each game to 'games.txt'
 lcs_season = get_match_id('https://lol.gamepedia.com/NA_LCS/2018_Season/Summer_Season')
 match_stats = []
-for x in range(0,5):
-	match_stats.append(get_match(lcs_season[x]))
-for a in match_stats:
-	for b in a:
-		print(len(b))
+#for x in range(0,5):
+#	match_stats.append(get_match(lcs_season[x]))
+
+for x in lcs_season:
+	match_stats.append(get_match(x))
 with open('games.txt', "w+") as f:
 	for a in match_stats:
 		for b in a:	
